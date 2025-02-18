@@ -1,8 +1,11 @@
 ---
-final_name: cf-rabbitmq
-min_cli_version: 1.2690.0
 blobstore:
   provider: s3
   options:
-    bucket_name: pcf-rabbitmq-bosh-release-blobs
-    region: eu-west-1
+    bucket_name: rabbitmq-boshrelease
+    endpoint: https://6b990b000000d3148f82f97b857e00b0.ds11s3ns.swisscom.com
+    host: 6b990b000000d3148f82f97b857e00b0.ds11s3ns.swisscom.com
+    port: 443
+    ssl_verify_peer: false
+    credentials_source: static
+final_name: rabbitmq-service
