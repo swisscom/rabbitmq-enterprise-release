@@ -1,36 +1,28 @@
----
-# this comment prevents git conflicts
 basht/basht_0.1.0_Linux_x86_64.tgz:
   size: 757703
-  object_id: bbc2200b-670b-4562-72db-27ce98bc3161
-  sha: 5dee8d242fc333672e14d9e1d70162b77eab5924
-# this comment prevents git conflicts
+  object_id: 43055da2-d892-4f05-6821-1f1468c26020
+  sha: sha256:380f9c07b10f3b266d3198032e873d791d7dfdc55732164b261f5dc691673c1d
 erlang-25/otp_src_oss_25.3.2.13.tgz:
   size: 61371651
-  object_id: eb08689f-e005-4f79-4f12-df23a136c5b5
+  object_id: e3aea584-f1c6-493d-676e-d47da213ebb6
   sha: sha256:ee69fe70fccd277f28f628c1c368bf65325f4900c5dd39185e426218bcb1c1d5
-# this comment prevents git conflicts
 erlang-26/otp_src_oss_26.2.5.2.tgz:
   size: 63017713
-  object_id: 9934d156-bb7d-4060-7746-8c0f24d0f052
+  object_id: 4b72f020-e1ab-4e4b-6037-2b6654c686ee
   sha: sha256:96d80cff18ed0d63e5f787ffd70498244d7a16988f0797bec323246ca670d3f6
-# this comment prevents git conflicts
 golang/go1.23.0.linux-amd64.tar.gz:
   size: 73590011
-  object_id: 84d574d6-d4a7-4097-790d-263dcb73c205
+  object_id: 8b676c73-aa54-4977-6177-1cd2a8537007
   sha: sha256:905a297f19ead44780548933e0ff1a1b86e8327bb459e92f9c0012569f76f5e3
-# this comment prevents git conflicts
 haproxy/haproxy-2.6.18.tar.gz:
   size: 4103766
-  object_id: bef8a52d-c998-42f7-52f1-448b61c7dc8c
+  object_id: 773a6477-caf7-4633-5cef-7828030ce52a
   sha: sha256:1b36d3c618360eff7cdc2b70dd53affdf9c939d0fdf8602ac2d77018535f709a
-# this comment prevents git conflicts
 rabbitmq-server-3.11/rabbitmq-server-generic-unix-3.11.28.tar.xz:
   size: 15594916
-  object_id: 519ebb39-4f9d-46cf-7d49-7057987bd959
+  object_id: 67944ce3-8397-428d-4768-b4b89578247e
   sha: sha256:7b19ae061454ca1f8aeac0412673f718cb7a9b3a060b495dad0ec6345c3b8f30
-# this comment prevents git conflicts
 rabbitmq-server-3.12/rabbitmq-server-generic-unix-3.12.15.tar.xz:
   size: 15675056
-  object_id: 2385caac-bdd5-4600-71a5-a64a4be138e6
+  object_id: 5f980a65-c2af-4035-72c6-ff35bacb5fb3
   sha: sha256:4af7d7bff2815f8c54d181a8a5321c854ce765c4f4e677b20904f4586131c032
