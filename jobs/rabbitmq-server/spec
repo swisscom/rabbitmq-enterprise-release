@@ -91,7 +91,7 @@ properties:
 
   rabbitmq-server.erlang_major_version:
     description: "Major version of Erlang to use on RabbitMQ instances in this deployment"
-    default: 25
+    default: 26
   rabbitmq-server.cookie:
     description: "Erlang cookie used by RabbitMQ nodes and rabbitmqctl. You should set this to a secure password"
 
