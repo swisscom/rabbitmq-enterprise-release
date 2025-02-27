@@ -6,6 +6,5 @@ blobstore:
     endpoint: https://6b990b000000d3148f82f97b857e00b0.ds11s3ns.swisscom.com
     host: 6b990b000000d3148f82f97b857e00b0.ds11s3ns.swisscom.com
     port: 443
-    ssl_verify_peer: false
     credentials_source: static
 final_name: rabbitmq-service
