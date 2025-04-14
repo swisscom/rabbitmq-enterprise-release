@@ -1,82 +1,68 @@
-# Cloud Foundry RabbitMQ Service
+# BOSH Release for RabbitMQ Enterprise
+This repository contains a BOSH release for RabbitMQ Enterprise. 
 
-This repository contains the release for RabbitMQ for Cloud Foundry.
-It is deployable by BOSH in the [usual way](https://bosh.io/docs/deploying.html).
+## Updating the RabbitMQ Enterprise version
+In this guide we describe the step-by-step procedure to upgrade the RabbitMQ Enterprise version in the BOSH release.
 
-This release is now using BOSH v2 [job links](https://bosh.io/docs/links.html) and [cloud config](https://bosh.io/docs/cloud-config.html) and requires at least BOSH Director v255.5
+### Prerequisites
+Before creating a new bosh release with new binaries please consider review official RabbitMQ documentation in order to follow possible upgrade paths and note any potential breaking change.
+<https://www.rabbitmq.com/docs/upgrade>
 
-## Contributing
+Breaking changes are documented in the release notes:
+<https://github.com/rabbitmq/rabbitmq-server/releases>.
 
-Even though the default branch is `release`, you should push changes to `main`. [The `release` branch is the default so that bosh.io can find our releases](https://github.com/bosh-io/releases#how-does-boshio-find-my-release).
+### Add blobs
 
-## Status
+Use the bosh-cli to execute these steps in the git repo. <https://bosh.io/docs/cli-v2-install>
+Download RabbitMQ binaries from <https://github.com/rabbitmq/rabbitmq-server/releases>.
 
-Job | Status
---- | ---
-unit tests | [![hush-house.pivotal.io](https://hush-house.pivotal.io/api/v1/teams/pcf-rabbitmq/pipelines/cf-rabbitmq-release/jobs/unit-tests/badge)](https://hush-house.pivotal.io/teams/pcf-rabbitmq/pipelines/cf-rabbitmq-release/jobs/unit-tests)
-integration tests | [![hush-house.pivotal.io](https://hush-house.pivotal.io/api/v1/teams/pcf-rabbitmq/pipelines/cf-rabbitmq-release/jobs/integration-test/badge)](https://hush-house.pivotal.io/teams/pcf-rabbitmq/pipelines/cf-rabbitmq-release/jobs/integration-test)
+Download the rabbitmq-server binaries with the following format:
+```
+rabbitmq-server-generic-unix-<x.y.z>.tar.xz
+```
 
-## Dependencies
+Add binaries as a blob to the bosh release and upload them to s3:
 
-- [bundler](http://bundler.io/)
-- [BOSH CLI v2](https://bosh.io/docs/cli-v2.html#install)
-- [BOSH Lite](https://bosh.io/docs/bosh-lite)
-
-
-## Install (locally)
-
-Clone the repository and install dependencies.
 ```bash
-$ bundle install
+bosh add-blob ~/Downloads/rabbitmq-server-generic-unix-3.13.7.tar.xz rabbitmq-server-3.13/rabbitmq-server-generic-unix-3.13.7.tar.xz
+bosh upload-blob
 ```
 
-## Deploying
 
-Once you have a [BOSH Lite up and running locally](https://bosh.io/docs/bosh-lite), run `scripts/deploy-to-bosh-lite`.
+### Create package files
+Copy the current `rabbitmq-server` package directory to the a new package directory. The new package directory should look like this:
 
-To deploy the release into BOSH you will need a deployment manifest. You can generate a deployment manifest using the following command:
-```sh
-bosh interpolate \
-  --vars-file=manifests/lite-vars-file.yml \
-  manifests/cf-rabbitmq-template.yml
+```bash
+packages/
+├── rabbitmq-server-<x.y>/
+│   ├── packaging
+│   ├── spec
+```
+Update all versions in both the `packaging` and `spec` files. The version in those files should be the same as the version of the blob you added in the previous step.
+
+### Set new version as default
+In the `jobs/rabbitmq-server/spec` file, set the `version` to the new version. This will be the default version of RabbitMQ that will be used when deploying the BOSH release. Also add the new package to the `packages` section.
+```yaml
+packages:
+ - erlang-26
+ - rabbitmq-server-3.x
+ - rabbitmq-server-3.y
+...
+properties:
+   rabbitmq-server.version:
+     description: "Version of RabbitMQ to use"
+     default: "3.y"
 ```
 
-Alternatively, you can use the `scripts/generate-manifest` in order to generate a vanilla manifest for BOSH lite.
-
-Currently, the release has only been tested to run on manual networks (https://bosh.io/docs/networks/).
-
-## Testing
-
-Run `bundle exec rake --tasks` to list all the test subsets.
-
-### Unit Tests
-
-To run only unit tests locally, run: `scripts/unit-test`.
-
-### Integration Tests
-Integration tests require this release to be deployed into a BOSH director (see [Deploying section above](#deploying)).
-
-To run integration tests do `scripts/integration-test`.
-
-### Embedded Release Tests
-
-Sometimes testing BOSH releases can lead to writing many tests at the top of
-the test pyramid, which can increase the feedback loop. Also when tests fail
-debugging can be hard given there are many components working together.
-
-Embedded release tests are jobs that we deploy in a co-located way so that we
-can execute tests within a given deployment, inside a VM. The goal is to pull
-tests down the test pyramid trying to shorten the feedback loop and bring the
-tests closer to the code.
-
-To execute embedded release tests you need to co-locate the tests within the
-release being tested and deploy. The deployment should fail if the tests fail.
-The tests we use can be found in the [test release repo](https://github.com/pivotal-cf/cf-rabbitmq-test-release).
-
-### Bonus
-Back in time [Multitenant Broker Release](https://github.com/pivotal-cf/cf-rabbitmq-multitenant-broker-release/) used to live in the same Github repository as [cf-rabbitmq-release](https://github.com/pivotal-cf/cf-rabbitmq-release), but not anymore. We have split both releases into two different repositories. They do different things and have different lifecyle, which explains our decision to do that.
-
-A collection of ops-files and vars-files, features from [Bosh 2 CLI](https://bosh.io/docs/cli-int/), can be used to generate manifests. You’ll find a folder called `manifests` in both repositories with a manifest template, some ops-files and example of vars-files. It's not required to have two different deployments for `cf-rabbitmq-release` and `cf-rabbitmq-multitenant-broker-release`. In case you want to colocate both jobs you can leverage [this ops-file](https://github.com/pivotal-cf/cf-rabbitmq-multitenant-broker-release/blob/master/manifests/add-cf-rabbitmq.yml) to colocate them in the same deployment.
-
-[More information about bosh interpolate](https://bosh.io/docs/cli-int/).
-
+### Decommission old versions
+This bosh release will usually include two versions of RabbitMQ: the current version and the newer version. When adding a new version you can decommission a the same time a version that is no longer used anymore.
+For this :
+1. Remove the old blob with following command:
+    ```bash
+    bosh remove-blob rabbitmq-server-<x.y>/rabbitmq-server-generic-unix-<x.y.z>.tar.xz
+    ```
+2. Remove the old package directory:
+    ```bash
+    rm -rf packages/rabbitmq-server-<x.y>
+    ```
+3. Remove the old version from the `jobs/rabbitmq-server/spec` file.
