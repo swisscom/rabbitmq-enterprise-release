@@ -1,11 +1,11 @@
 # BOSH Release for RabbitMQ Enterprise
-This repository contains the BOSH release for RabbitMQ Enterprise. 
+This repository contains a BOSH release for RabbitMQ Enterprise. 
 
 ## Updating the RabbitMQ Enterprise version
 This guide describes step-by-step the procedure to upgrade RabbitMQ Enterprise version in the BOSH release.
 
 ### Prerequisites
-Before creating a new BOSH release with the new binaries, please consider reviewing the official RabbitMQ documentation. It is recommended to get acquinted with all the possible upgrade paths, and to note any potential breaking change.
+Before creating a new BOSH release with the updated binaries, please consider reviewing the official RabbitMQ documentation. It is recommended to become acquainted with all possible upgrade paths and to take note of any potential breaking changes.
 <https://www.rabbitmq.com/docs/upgrade>
 
 Breaking changes are documented in the release notes:
