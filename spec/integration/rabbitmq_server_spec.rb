@@ -6,7 +6,7 @@ require 'tempfile'
 
 require 'httparty'
 
-RMQ_VERSION = '3.12'
+RMQ_VERSION = '3.13'
 
 MQTT_TCP_PORT = "1883"
 STOMP_TCP_PORT = "61613"
