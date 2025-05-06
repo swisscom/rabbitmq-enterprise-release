@@ -4,7 +4,7 @@ export HOME=${BOSH_INSTALL_DIR}
 
 cpus="$(grep -c ^processor /proc/cpuinfo)"
 
-VERSION="26.2.5.2"
+VERSION="26.2.5.11"
 MAJOR_VERSION="26"
 echo "$MAJOR_VERSION" > "$BOSH_INSTALL_TARGET/erlang_version"
 
@@ -14,8 +14,8 @@ else
 	jit_flags=""
 fi
 
-tar xzf erlang-26/otp_src_oss_${VERSION}.tgz
-cd otp_src_oss_${VERSION}
+tar xzf erlang-26/otp_src_${VERSION}.tar.gz
+cd otp_src_${VERSION}
 ./configure \
 	--disable-hipe \
 	--disable-sctp \

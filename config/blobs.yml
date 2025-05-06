@@ -6,6 +6,10 @@ erlang-25/otp_src_oss_25.3.2.13.tgz:
   size: 61371651
   object_id: e3aea584-f1c6-493d-676e-d47da213ebb6
   sha: sha256:ee69fe70fccd277f28f628c1c368bf65325f4900c5dd39185e426218bcb1c1d5
+erlang-26/otp_src_26.2.5.11.tar.gz:
+  size: 106235503
+  object_id: 1228d959-0697-46a0-58d6-dd66ef20195d
+  sha: sha256:69cf6c2cc4e54e8d0bab8f9893f0b61dee10bff575c3535d47b6057a468751b1
 erlang-26/otp_src_oss_26.2.5.2.tgz:
   size: 63017713
   object_id: 4b72f020-e1ab-4e4b-6037-2b6654c686ee
