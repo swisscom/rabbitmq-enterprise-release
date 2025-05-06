@@ -1,5 +1,4 @@
-# get the values from the output of
-# lpass show "Shared-PCF RabbitMQ/Concourse Pipelines/bosh-release-pipeline-secrets"
+# Get the values from https://gitdata.scmgmt.net/cloud-native/services/rabbitmq-boshrelease-private-files
 #
 # After filling in the values move this file to config/private.yml
 #
