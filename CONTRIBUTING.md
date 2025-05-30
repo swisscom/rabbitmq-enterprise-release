@@ -1,28 +1,29 @@
 # Contributing
 
-Thanks for your interest in contributing to Pivotal's Open Source projects!
+We welcome contributions and are really glad about your involvement in the project.
 
-This project is maintained by the Pivotal Cloud Foundry RabbitMQ team.
+## Reporting Feedback
 
-**At the moment, the team is not actively reviewing contributions to this project.**
+Use GitHub’s issues feature to report problems with, and request enhancements to, the functionality or documentation.
 
-We will aim to review or close existing pull requests and issues as of August 2017 as soon as we are able.
-We do not have an expected turnaround timeframe for new PRs or issues.
+## Contributing Code
 
-If you are a PCF customer, please do not use this repository to flag issues. Please use normal customer support channels.
+Code contributions are highly appreciated. Bug fixes and small enhancements can be submitted as pull requests. For larger changes and new features, please open a GitHub issue with your proposal first, so the solution can be discussed.
 
-## Legal
+### Commit Guidelines
 
-The following guidelines apply to all contributions:
+All your commits must follow the [conventional commit message format](https://www.conventionalcommits.org/en/v1.0.0/#summary).
 
-- Contributors must sign the [Pivotal Contributor License Agreement](https://cla.pivotal.io/sign/pivotal)
-- Agree to terms of the [Cloud Foundry Code of Conduct](https://www.cloudfoundry.org/code-of-conduct/)
+Valid scopes for this project are:
 
-## General Code Contribution Guidelines
+- `editor`: changes to the script editor GUI
+- `runner`: changes to the script execution logic
+- `meta`: changes to the build process, deployment, packaging, or the project setup
 
-PCF Open-Source projects prefer that contributions contain:
+Commits that do not fit any of these scopes, or that change aspects in more than one scope, should not specify a scope.
 
-- Descriptive and understandable tests
-- Helpful [commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-- Small improvements that leave the code base better than it was before, aka the [Boy Scout
-  Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule)
+Ideally, each commit should represent a working and buildable state, but still only contain an atomic change compared to its parent. Please rewrite history accordingly before opening a PR.
+
+### License
+
+By contributing code or documentation, you agree to have your contribution licensed under [our license](/LICENSE).
