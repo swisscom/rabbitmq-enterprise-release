@@ -1,6 +1,18 @@
 # BOSH Release for RabbitMQ Enterprise
 
-This repository contains a BOSH release for RabbitMQ Enterprise.
+This repository is a Swisscom-maintained fork of the original [cf-rabbitmq-release](https://github.com/pivotal-cf/cf-rabbitmq-release) project. As the upstream project has not seen active contributions since August 2024, we have decided to continue development and maintenance of this BOSH release.
+
+## Why this fork?
+
+The original project has not received any new releases or active contributions since August 2024. As we at Swisscom continue to rely on this BOSH release to run RabbitMQ in Cloud Foundry environments, we have decided to continue its development and maintenance independently.
+
+Our goals with this fork are to:
+- Keep the BOSH release compatible with recent RabbitMQ and Erlang versions.
+- Apply security patches and dependency updates as needed.
+
+## Getting Started
+
+To deploy or upgrade RabbitMQ using this release, follow the standard instructions from the original repository.
 
 ## Updating the RabbitMQ Enterprise version
 
