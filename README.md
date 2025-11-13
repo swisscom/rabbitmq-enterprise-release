@@ -7,6 +7,7 @@ This repository is a Swisscom-maintained fork of the original [cf-rabbitmq-relea
 The original project has not received any new releases or active contributions since August 2024. As we at Swisscom continue to rely on this BOSH release to run RabbitMQ in Cloud Foundry environments, we have decided to continue its development and maintenance independently.
 
 Our goals with this fork are to:
+
 - Keep the BOSH release compatible with recent RabbitMQ and Erlang versions.
 - Apply security patches and dependency updates as needed.
 

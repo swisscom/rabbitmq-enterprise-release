@@ -2,11 +2,10 @@
 
 set -e
 
-RMQ_VERSION="3.12.13"
-RMQ_VERSION_SEMVER="3.12.13"
-RABBITMQ_SERVER_PATH="rabbitmq-server-3.12"
+RMQ_VERSION="4.1.5"
+RABBITMQ_SERVER_PATH="rabbitmq-server-4.1"
 
-echo "$RMQ_VERSION_SEMVER" > "$BOSH_INSTALL_TARGET/rmq_version"
+echo "$RMQ_VERSION" >"$BOSH_INSTALL_TARGET/rmq_version"
 
 tar xf "${RABBITMQ_SERVER_PATH}/rabbitmq-server-generic-unix-$RMQ_VERSION.tar.xz"
 
@@ -15,8 +14,7 @@ cp -a "rabbitmq_server-$RMQ_VERSION"/* "$BOSH_INSTALL_TARGET"
 mv "$BOSH_INSTALL_TARGET/sbin" "$BOSH_INSTALL_TARGET/privbin"
 
 mkdir "$BOSH_INSTALL_TARGET/bin"
-for script in rabbitmqctl rabbitmq-server rabbitmq-plugins rabbitmq-diagnostics rabbitmq-upgrade
-do
+for script in rabbitmqctl rabbitmq-server rabbitmq-plugins rabbitmq-diagnostics rabbitmq-upgrade; do
     cp rabbitmq-server/rabbitmq-script-wrapper "$BOSH_INSTALL_TARGET/bin/$script"
     chmod 0755 "$BOSH_INSTALL_TARGET/bin/$script"
 done

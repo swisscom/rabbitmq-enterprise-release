@@ -1,0 +1,9 @@
+---
+name: rabbitmq-server-4.1
+metadata:
+  version: 4.1.5
+files:
+  - rabbitmq-server-4.1/rabbitmq-server-generic-unix-4.1.5.tar.xz
+  - rabbitmq-server/rabbitmq-script-wrapper
+  - rabbitmq-server/rabbitmq-defaults
+dependencies: []
