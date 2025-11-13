@@ -8,6 +8,7 @@ erlang-26/otp_src_26.2.5.11.tar.gz:
   sha: sha256:69cf6c2cc4e54e8d0bab8f9893f0b61dee10bff575c3535d47b6057a468751b1
 erlang-26/otp_src_26.2.5.16.tar.gz:
   size: 106302663
+  object_id: 7ad102ab-d296-45f9-79ea-b4021229ccbb
   sha: sha256:932d091933f818d89c2cf7a8c23d84781bbae4b1ee7b846e8676e22768570cae
 golang/go1.23.0.linux-amd64.tar.gz:
   size: 73590011
@@ -23,4 +24,5 @@ rabbitmq-server-3.13/rabbitmq-server-generic-unix-3.13.7.tar.xz:
   sha: sha256:45e5423c43f15c9d2b6ee5947f8e4f256fcfa0c1e7743e60c473cd006954e1fa
 rabbitmq-server-4.1/rabbitmq-server-generic-unix-4.1.5.tar.xz:
   size: 22449392
+  object_id: 014afa16-4123-44d3-48f0-2bd4697e5ca1
   sha: sha256:d431cf7fd2b6cd40bc02b4d4428363317c065a87c7461e65cbf24d94d6ffc278
